@@ -2,6 +2,7 @@
 title: "Pr1"
 format: html
 editor: visual
+output: "README.md"
 ---
 
 ## Практическая работа №1
