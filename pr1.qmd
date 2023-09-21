@@ -1,8 +1,11 @@
 ---
 title: "Pr1"
-format: html
+author: "Солдатенкова Ксения БИСО-03-20"
+format: 
+  md:
+    output-file: README.md
 editor: visual
-output: "README.md"
+output: md_document
 ---
 
 ## Практическая работа №1
