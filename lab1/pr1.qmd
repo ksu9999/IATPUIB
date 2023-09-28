@@ -1,5 +1,5 @@
 ---
-title: "Pr1"
+title: "Практическая работа №1"
 author: "Солдатенкова Ксения БИСО-03-20"
 format: 
   md:
@@ -8,9 +8,7 @@ editor: visual
 output: md_document
 ---
 
-## Практическая работа №1
-
-# Задание 1: Basic Building Blocks
+# Задание 1: Базовые структурные блоки
 
 In its simplest form, R can be used as an interactive calculator. Type 5 + 7 and press Enter.
 
@@ -18,7 +16,7 @@ In its simplest form, R can be used as an interactive calculator. Type 5 + 7 and
 5 + 7
 ```
 
-To assign the result of 5 + 7 to a new variable called x, you type x <- 5 + 7. This can be read as 'x gets 5 plus 7'. Give it a try now.
+To assign the result of 5 + 7 to a new variable called x, you type x \<- 5 + 7. This can be read as 'x gets 5 plus 7'. Give it a try now.
 
 ```{r}
 #| echo: false
@@ -67,41 +65,41 @@ You can combine vectors to make a new vector. Create a new vector that contains 
  c(z,555,z)
 ```
 
- Numeric vectors can be used in arithmetic expressions. Type the following to see what happens: z * 2 + 100.
- 
+Numeric vectors can be used in arithmetic expressions. Type the following to see what happens: z \* 2 + 100.
+
 ```{r}
 z*2+100
 ```
- 
- Take the square root of z - 1 and assign it to a new variable called my_sqrt.
- 
+
+Take the square root of z - 1 and assign it to a new variable called my_sqrt.
+
 ```{r}
 z-1
 ```
- 
- Assign the result of sqrt(z - 1) to a variable called my_sqrt.
- 
+
+Assign the result of sqrt(z - 1) to a variable called my_sqrt.
+
 ```{r}
 my_sqrt<-sqrt(z-1)
 ```
- 
- Before we view the contents of the my_sqrt variable, what do you think it contains?
+
+Before we view the contents of the my_sqrt variable, what do you think it contains?
 
 1: a vector of length 3
- 
- Print the contents of my_sqrt.
- 
+
+Print the contents of my_sqrt.
+
 ```{r}
 my_sqrt
 ```
- 
- Now, create a new variable called my_div that gets the value of z divided by my_sqrt.
- 
+
+Now, create a new variable called my_div that gets the value of z divided by my_sqrt.
+
 ```{r}
 my_div <- z / my_sqrt
 ```
- 
- Which statement do you think is true?
+
+Which statement do you think is true?
 
 3: The first element of my_div is equal to the first element of z divided by the first element of my_sqrt, and so on...
 
@@ -111,30 +109,31 @@ Go ahead and print the contents of my_div.
 my_div
 ```
 
- To see another example of how this vector 'recycling' works, try adding c(1, 2, 3, 4) and c(0, 10). Don't worry about saving the result in a new variable.
- 
+To see another example of how this vector 'recycling' works, try adding c(1, 2, 3, 4) and c(0, 10). Don't worry about saving the result in a new variable.
+
 ```{r}
 c(1,2,3,4)+c(0,10)
 ```
- 
- Try c(1, 2, 3, 4) + c(0, 10, 100) for an example.
- 
+
+Try c(1, 2, 3, 4) + c(0, 10, 100) for an example.
+
 ```{r}
 c(1, 2, 3, 4) + c(0, 10, 100)
 ```
- 
- In many programming environments, the up arrow will cycle through previous commands. Try hitting the up arrow on your keyboard until you get to this command (z * 2 + 100), then change 100 to 1000 and hit Enter. If the up arrow doesn't work for you, just type the corrected command.
- 
+
+In many programming environments, the up arrow will cycle through previous commands. Try hitting the up arrow on your keyboard until you get to this command (z \* 2 + 100), then change 100 to 1000 and hit Enter. If the up arrow doesn't work for you, just type the corrected command.
+
 ```{r}
 z*2+1000
 ```
- 
- You can type the first two letters of the variable name, then hit the Tab key (possibly more than once). Most programming environments will provide a list of variables that you've created that begin with 'my'. This is called auto-completion and can be quite handy when you have many variables in your workspace. Give it a try. (If auto-completion doesn't work for you, just type my_div and press Enter.)
- 
+
+You can type the first two letters of the variable name, then hit the Tab key (possibly more than once). Most programming environments will provide a list of variables that you've created that begin with 'my'. This is called auto-completion and can be quite handy when you have many variables in your workspace. Give it a try. (If auto-completion doesn't work for you, just type my_div and press Enter.)
+
 ```{r}
 my_div
 ```
-# Задание 2: Workspace and Files
+
+# Задание 2: Рабочие пространства и файлы
 
 Determine which directory your R session is using as its current working directory using getwd().
 
@@ -148,7 +147,7 @@ List all the objects in your local workspace using ls().
 ls()
 ```
 
-Assign 9 to x using x <- 9.
+Assign 9 to x using x \<- 9.
 
 ```{r}
 x <- 9
@@ -208,8 +207,7 @@ This should be the only file in this newly created directory. Let's check this b
 list.files()
 ```
 
-Check to see if "mytest.R" exists in the working directory using
-| the file.exists() function.
+Check to see if "mytest.R" exists in the working directory using \| the file.exists() function.
 
 ```{r}
 file.exists("mytest.R")
@@ -263,26 +261,26 @@ Go back to your original working directory using setwd(). (Recall that we create
 setwd(old.dir)
 ```
 
-# Задание 3: Sequences of Numbers
+# Задание 3: Последовательности чисел
 
 The simplest way to create a sequence of numbers in R is by using the `:` operator. Type 1:20 to see how it works.
- 
+
 ```{r}
 1:20
 ```
- 
- That gave us every integer between (and including) 1 and 20. We could also use it to create a sequence of real numbers. For example, try pi:10.
- 
+
+That gave us every integer between (and including) 1 and 20. We could also use it to create a sequence of real numbers. For example, try pi:10.
+
 ```{r}
 pi:10
 ```
- 
- What happens if we do 15:1? Give it a try to find out.
- 
+
+What happens if we do 15:1? Give it a try to find out.
+
 ```{r}
 15:1
 ```
- 
+
 Pull up the documentation for `:` now.
 
 ```{r}
@@ -307,7 +305,7 @@ Or maybe we don't care what the increment is and we just want a sequence of 30 n
 seq(5, 10, length=30)
 ```
 
-You're using the same function here, but changing its arguments for different results. Be sure to store the result in a new variable called my_seq, like this: my_seq <- seq(5, 10, length=30).
+You're using the same function here, but changing its arguments for different results. Be sure to store the result in a new variable called my_seq, like this: my_seq \<- seq(5, 10, length=30).
 
 ```{r}
 my_seq <- seq(5, 10,length=30)
@@ -355,7 +353,7 @@ Finally, let's say that rather than repeating the vector (0, 1, 2) over and over
 rep(c(0, 1, 2), each = 10)
 ```
 
-# Задание 4: Vectors
+# Задание 4: Векторы
 
 First, create a numeric vector num_vect that contains the values 0.5, 55, -10, and 6.
 
@@ -363,7 +361,7 @@ First, create a numeric vector num_vect that contains the values 0.5, 55, -10, a
 num_vect<-c(0.5, 55, -10, 6)
 ```
 
-Now, create a variable called tf that gets the result of num_vect < 1, which is read as 'num_vect is less than 1'.
+Now, create a variable called tf that gets the result of num_vect \< 1, which is read as 'num_vect is less than 1'.
 
 ```{r}
  tf <- num_vect < 1
@@ -379,21 +377,21 @@ Print the contents of tf now.
 tf
 ```
 
-Let's try another. Type num_vect >= 6 without assigning the result to a new variable.
+Let's try another. Type num_vect \>= 6 without assigning the result to a new variable.
 
 ```{r}
 num_vect >= 6
 ```
 
-(3 > 5) & (4 == 4)
+(3 \> 5) & (4 == 4)
 
 2: FALSE
 
-(TRUE == TRUE) | (TRUE == FALSE)
+(TRUE == TRUE) \| (TRUE == FALSE)
 
 2: TRUE
 
-((111 >= 111) | !(TRUE)) & ((4 + 1) == 5)
+((111 \>= 111) \| !(TRUE)) & ((4 + 1) == 5)
 
 1: TRUE
 
@@ -415,40 +413,38 @@ Type paste(my_char, collapse = " ") now. Make sure there's a space between the d
 paste(my_char, collapse = " ")
 ```
 
- To add (or 'concatenate') your name to the end of my_char, use the c() function like this: c(my_char, "your_name_here"). Place your name in double quotes where I've put "your_name_here". Try it now, storing the result in a new variable called my_name.
- 
+To add (or 'concatenate') your name to the end of my_char, use the c() function like this: c(my_char, "your_name_here"). Place your name in double quotes where I've put "your_name_here". Try it now, storing the result in a new variable called my_name.
+
 ```{r}
 my_name <- c(my_char, "Swirl")
 ```
- 
- Take a look at the contents of my_name.
- 
+
+Take a look at the contents of my_name.
+
 ```{r}
 my_name
 ```
- 
- Now, use the paste() function once more to join the words in my_name together into a single character string. Don't forget to say collapse = " "!
- 
+
+Now, use the paste() function once more to join the words in my_name together into a single character string. Don't forget to say collapse = " "!
+
 ```{r}
 paste(my_name, collapse = " ")
 ```
- 
- In the simplest case, we can join two character vectors that are each of length 1 (i.e. join two words). Try paste("Hello", "world!", sep = " "), where the `sep` argument tells R that we want to separate the joined elements with a single space.
- 
+
+In the simplest case, we can join two character vectors that are each of length 1 (i.e. join two words). Try paste("Hello", "world!", sep = " "), where the `sep` argument tells R that we want to separate the joined elements with a single space.
+
 ```{r}
 paste("Hello", "world!", sep = " ")
 ```
- 
- For a slightly more complicated example, we can join two vectors, each of length 3. Use paste() to join the integer vector 1:3 with the character vector c("X", "Y", "Z"). This time, use sep = "" to leave no space between the joined elements.
- 
+
+For a slightly more complicated example, we can join two vectors, each of length 3. Use paste() to join the integer vector 1:3 with the character vector c("X", "Y", "Z"). This time, use sep = "" to leave no space between the joined elements.
+
 ```{r}
 paste(1:3, c("X", "Y", "Z"), sep = "")
 ```
- 
- Vector recycling! Try paste(LETTERS, 1:4, sep = "-"), where LETTERS is a predefined variable in R containing a character vector of all 26 letters in the English alphabet.
- 
+
+Vector recycling! Try paste(LETTERS, 1:4, sep = "-"), where LETTERS is a predefined variable in R containing a character vector of all 26 letters in the English alphabet.
+
 ```{r}
 paste(LETTERS, 1:4, sep = "-")
 ```
- 
- 

@@ -1,9 +1,7 @@
-# Pr1
+# Практическая работа №1
 Солдатенкова Ксения БИСО-03-20
 
-## Практическая работа №1
-
-# Задание 1: Basic Building Blocks
+# Задание 1: Базовые структурные блоки
 
 In its simplest form, R can be used as an interactive calculator. Type
 5 + 7 and press Enter.
@@ -182,7 +180,7 @@ my_div
 
     [1] 3.478505 3.181981 2.146460
 
-# Задание 2: Workspace and Files
+# Задание 2: Рабочие пространства и файлы
 
 Determine which directory your R session is using as its current working
 directory using getwd().
@@ -191,7 +189,7 @@ directory using getwd().
 getwd()
 ```
 
-    [1] "C:/Users/user/Documents/IATPUIB"
+    [1] "C:/Users/user/Documents/IATPUIB/lab1"
 
 List all the objects in your local workspace using ls().
 
@@ -224,9 +222,9 @@ dir().
 list.files()
 ```
 
-    [1] "IATPUIB.Rproj" "mytest2.R"     "mytest3.R"     "pr1.html"     
-    [5] "pr1.qmd"       "pr1.rmarkdown" "pr1_files"     "testdir"      
-    [9] "testdir2"     
+     [1] "IATPUIB.Rproj" "mytest2.R"     "mytest3.R"     "pr1.html"     
+     [5] "pr1.qmd"       "pr1.rmarkdown" "pr1_files"     "README.md"    
+     [9] "testdir"       "testdir2"     
 
 As we go through this lesson, you should be examining the help page for
 each new function. Check out the help page for list.files with the
@@ -287,7 +285,7 @@ list.files()
 
      [1] "IATPUIB.Rproj" "mytest.R"      "mytest2.R"     "mytest3.R"    
      [5] "pr1.html"      "pr1.qmd"       "pr1.rmarkdown" "pr1_files"    
-     [9] "testdir"       "testdir2"     
+     [9] "README.md"     "testdir"       "testdir2"     
 
 Check to see if “mytest.R” exists in the working directory using | the
 file.exists() function.
@@ -305,9 +303,9 @@ file.info("mytest.R")
 ```
 
              size isdir mode               mtime               ctime
-    mytest.R    0 FALSE  666 2023-09-21 12:09:29 2023-09-21 12:09:29
+    mytest.R    0 FALSE  666 2023-09-28 13:11:49 2023-09-28 13:11:49
                            atime exe
-    mytest.R 2023-09-21 12:09:29  no
+    mytest.R 2023-09-28 13:11:49  no
 
 Change the name of the file “mytest.R” to “mytest2.R” by using
 file.rename().
@@ -372,7 +370,7 @@ working directory at the start of these questions.)
 setwd(old.dir)
 ```
 
-# Задание 3: Sequences of Numbers
+# Задание 3: Последовательности чисел
 
 The simplest way to create a sequence of numbers in R is by using the
 `:` operator. Type 1:20 to see how it works.
@@ -520,7 +518,7 @@ rep(c(0, 1, 2), each = 10)
 
      [1] 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2
 
-# Задание 4: Vectors
+# Задание 4: Векторы
 
 First, create a numeric vector num_vect that contains the values 0.5,
 55, -10, and 6.
