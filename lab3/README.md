@@ -39,8 +39,10 @@ library(dplyr)
 
 1\. Сколько встроенных в пакет nycflights13 датафреймов?
 
-nycflights13:: Ответ: в пакет nycflights13 встроено 5 датафреймов:
-airlines, airports, flights, planes, weather
+nycflights13::
+
+Ответ: в пакет nycflights13 встроено 5 датафреймов: airlines, airports,
+flights, planes, weather
 
 2\. Сколько строк в каждом датафрейме?
 
