@@ -23,7 +23,6 @@ output: md_document
 1\. Импортируйте данные DNS
 
 ```{r}
-install.packages("tidyverse")
 library(tidyverse)
 ```
 ```{r}
