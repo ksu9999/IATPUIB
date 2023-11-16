@@ -410,20 +410,62 @@ top_domains
      9 "44.206.168.192.in-addr.arpa"                                            7248
     10 "hpe8aa67"                                                               6929
 
-1.teredo.ipv6.microsoft.com - IP: 20.112.250.133 - Country: USA - City:
-Des Moines - Provider organization: Microsoft Corporation
+1\. teredo.ipv6.microsoft.com
 
-2.tools.google.com - IP: 108.177.127.139 - Country: USA - City: Mountain
-View - Provider organization: Google LLC
+-   IP: 20.112.250.133
 
-3.www.apple.com - IP: 2.21.16.234 - Country: Belgium - City: Brussels -
-Provider organization: Akamai Technologies
+-   Country: USA
 
-4.time.apple.com - IP: 17.253.28.123 - Country: UK - City: Slough -
-Provider organization: Apple Inc.
+-   City: Des Moines
 
-5.safebrowsing.clients.google.com - IP: 108.177.119.101 - Country: USA -
-City: Mountain View - Provider organization: Google LLC
+-   Provider organization: Microsoft Corporation
 
-6.44.206.168.192.in-addr.arpa - IP: 44.206.168.192 - Country: USA -
-City: Ashburn - Provider organization: Amazon.com
+2\. tools.google.com
+
+-   IP: 108.177.127.139
+
+-   Country: USA
+
+-   City: Mountain View
+
+-   Provider organization: Google LLC
+
+3\. www.apple.com
+
+-   IP: 2.21.16.234
+
+-   Country: Belgium
+
+-   City: Brussels
+
+-   Provider organization: Akamai Technologies
+
+4\. time.apple.com
+
+-   IP: 17.253.28.123
+
+-   Country: UK
+
+-   City: Slough
+
+-   Provider organization: Apple Inc.
+
+5\. safebrowsing.clients.google.com
+
+-   IP: 108.177.119.101
+
+-   Country: USA
+
+-   City: Mountain View
+
+-   Provider organization: Google LLC
+
+6\. 44.206.168.192.in-addr.arpa
+
+-   IP: 44.206.168.192
+
+-   Country: USA
+
+-   City: Ashburn
+
+-   Provider organization: Amazon.com

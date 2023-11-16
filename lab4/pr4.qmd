@@ -172,38 +172,62 @@ head(unique_ips_with_period_req, 10)
 ```{r}
 top_domains
 ```
-1\.teredo.ipv6.microsoft.com
+1\. teredo.ipv6.microsoft.com
+
 - IP: 20.112.250.133
+
 - Country: USA
+
 - City: Des Moines
+
 - Provider organization: Microsoft Corporation
 
-2\.tools.google.com
+2\. tools.google.com
+
 - IP: 108.177.127.139
+
 - Country: USA
+
 - City: Mountain View
+
 - Provider organization: Google LLC
 
-3\.www.apple.com
+3\. www.apple.com
+
 - IP: 2.21.16.234
+
 - Country: Belgium
+
 - City: Brussels
+
 - Provider organization: Akamai Technologies
 
-4\.time.apple.com
+4\. time.apple.com
+
 - IP: 17.253.28.123
+
 - Country: UK
+
 - City: Slough
+
 - Provider organization: Apple Inc.
 
-5\.safebrowsing.clients.google.com
+5\. safebrowsing.clients.google.com
+
 - IP: 108.177.119.101
+
 - Country: USA
+
 - City: Mountain View
+
 - Provider organization: Google LLC
 
-6\.44.206.168.192.in-addr.arpa
+6\. 44.206.168.192.in-addr.arpa
+
 - IP: 44.206.168.192
+
 - Country: USA
+
 - City:	Ashburn
+
 - Provider organization:	Amazon.com
