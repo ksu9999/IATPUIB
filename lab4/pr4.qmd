@@ -1,5 +1,5 @@
 ---
-title: "Практическая работа №1"
+title: "Практическая работа №4"
 author: "Солдатенкова Ксения БИСО-03-20"
 format: 
   md:
@@ -38,25 +38,21 @@ header_df
 dns_log <- read.csv("C:/Users/user/Documents/IATPUIB/lab4/dns.log", sep='\t')
 ```
 ```{r}
-dns_log
+head(dns_log, 10)
 ```
 
 
 2\. Добавьте пропущенные данные о структуре данных (назначении столбцов)
 ```{r}
-header_df[3, "Type"] <- "record"
+header_df[3, "Field"] <- "id.orig_h"
+header_df[3, "Type"] <- "addr"
 header_df[4, "Field"] <- "id.resp_h"
 header_df[4, "Type"] <- "addr"
 header_df[4, "Description"] <- "Response IP"
 ```
-```{r}
-header_df
-```
+
 ```{r}
 header_df_n <- header_df %>% add_row(Field = 'id.orig_p', Type = 'port', Description = 'Origin port', .before = 4)
-```
-```{r}
-header_df_n
 ```
 
 
@@ -72,6 +68,14 @@ header_df_n
 
 3\. Преобразуйте данные в столбцах в нужный формат
 
+```{r}
+field_n<-header_df_n[,1]
+colnames(dns_log)<-field_n
+dns_log$ts <- as.POSIXct(dns_log$ts, origin="1970-01-01")
+
+glimpse(dns_log)
+```
+
 
 4\. Просмотрите общую структуру данных с помощью функции glimpse()
 
@@ -83,17 +87,118 @@ glimpse(header_df)
 
 4\. Сколько участников информационного обмена в сети Доброй Организации?
 
+```{r}
+unique_part <- union(unique(dns_log$id.orig_h), unique(dns_log$id.resp_h))
+unique_part %>% length()
+```
+
 5\. Какое соотношение участников обмена внутри сети и участников обращений к внешним ресурсам?
+
+```{r}
+internal_ip_pattern <- c("192.168.", "10.", "100.([6-9]|1[0-1][0-9]|12[0-7]).", "172.((1[6-9])|(2[0-9])|(3[0-1])).")
+internal_ips <- unique_part[grep(paste(internal_ip_pattern, collapse = "|"), unique_part)]
+internal <- sum(unique_part %in% internal_ips)
+external <- length(unique_part) - internal
+
+ratio <- internal / external
+ratio
+```
+
 
 6\. Найдите топ-10 участников сети, проявляющих наибольшую сетевую активность.
 
-7\. Найдите топ-10 доменов, к которым обращаются пользователи сети и соответственное количество обращений
+```{r}
+top_active <- dns_log %>%
+  group_by(id.orig_h) %>%
+  summarise(requests = n()) %>%
+  arrange(desc(requests)) %>%
+  top_n(10, requests)
+
+print(top_active)
+```
+
+
+7\. Найдите топ-10 доменов, к которым обращаются пользователи сети и соответственное количество обращений.
+
+```{r}
+top_domains <- dns_log %>%
+  group_by(domain = tolower(`query `)) %>%
+  summarise(requests = n()) %>%
+  arrange(desc(requests)) %>%
+  top_n(10, requests)
+
+print(top_domains)
+```
+
 
 8\. Опеределите базовые статистические характеристики (функция summary() ) интервала времени между последовательным обращениями к топ-10 доменам.
+
+```{r}
+top_domains_filtered <- dns_log %>% 
+  filter(tolower(`query `) %in% top_domains$domain) %>%
+  arrange(ts)
+time_interval <- diff(top_domains_filtered$ts)
+
+summary(time_interval)
+```
+
 
 9\. Часто вредоносное программное обеспечение использует DNS канал в качестве канала управления, периодически отправляя запросы на подконтрольный злоумышленникам DNS сервер.
 По периодическим запросам на один и тот же домен можно выявить скрытый DNS канал. Есть ли такие IP адреса в исследуемом датасете?
 
+```{r}
+ip_domains <- dns_log %>%
+  group_by(ip = id.orig_h, domain = tolower(`query `)) %>%
+  summarise(requests = n(), .groups = 'drop') %>%
+  filter(requests > 1)
+
+unique_ips_with_period_req <- unique(ip_domains$ip)
+unique_ips_with_period_req %>% length()
+```
+```{r}
+head(unique_ips_with_period_req, 10)
+```
+
+
 ### Обогащение данных
 
-10. Определите местоположение (страну, город) и организацию-провайдера для топ-10 доменов. Для этого можно использовать сторонние сервисы, например https://v4.ifconfig.co.
+10\. Определите местоположение (страну, город) и организацию-провайдера для топ-10 доменов. Для этого можно использовать сторонние сервисы, например https://check-host.net/ip-info?host=www.apple.com&csrf_token=d6df11b1e07358714e561aefdedc2aa74974c758.
+
+```{r}
+top_domains
+```
+1\.teredo.ipv6.microsoft.com
+- IP: 20.112.250.133
+- Country: USA
+- City: Des Moines
+- Provider organization: Microsoft Corporation
+
+2\.tools.google.com
+- IP: 108.177.127.139
+- Country: USA
+- City: Mountain View
+- Provider organization: Google LLC
+
+3\.www.apple.com
+- IP: 2.21.16.234
+- Country: Belgium
+- City: Brussels
+- Provider organization: Akamai Technologies
+
+4\.time.apple.com
+- IP: 17.253.28.123
+- Country: UK
+- City: Slough
+- Provider organization: Apple Inc.
+
+5\.safebrowsing.clients.google.com
+- IP: 108.177.119.101
+- Country: USA
+- City: Mountain View
+- Provider organization: Google LLC
+
+6\.44.206.168.192.in-addr.arpa
+- IP: 44.206.168.192
+- Country: USA
+- City:	Ashburn
+- Provider organization:	Amazon.com
