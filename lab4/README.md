@@ -219,7 +219,21 @@ header_df_n
 field_n<-header_df_n[,1]
 colnames(dns_log)<-field_n
 dns_log$ts <- as.POSIXct(dns_log$ts, origin="1970-01-01")
+```
 
+4\. Просмотрите общую структуру данных с помощью функции glimpse()
+
+``` r
+glimpse(header_df)
+```
+
+    Rows: 21
+    Columns: 3
+    $ Field       <chr> "ts ", "uid ", "id.orig_h", "id.resp_h", "proto ", "trans_…
+    $ Type        <chr> "time ", "string", "addr", "addr", "proto", "count", "stri…
+    $ Description <chr> "Timestamp of the DNS request ", "Unique id of the connect…
+
+``` r
 glimpse(dns_log)
 ```
 
@@ -249,18 +263,6 @@ glimpse(dns_log)
     $ `TTLs `        <chr> "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", …
     $ `rejected `    <lgl> FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE,…
     $ ts             <dttm> 2012-03-16 16:30:05, 2012-03-16 16:30:15, 2012-03-16 1…
-
-4\. Просмотрите общую структуру данных с помощью функции glimpse()
-
-``` r
-glimpse(header_df)
-```
-
-    Rows: 21
-    Columns: 3
-    $ Field       <chr> "ts ", "uid ", "id.orig_h", "id.resp_h", "proto ", "trans_…
-    $ Type        <chr> "time ", "string", "addr", "addr", "proto", "count", "stri…
-    $ Description <chr> "Timestamp of the DNS request ", "Unique id of the connect…
 
 ### Анализ
 

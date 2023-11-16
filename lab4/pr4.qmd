@@ -75,7 +75,7 @@ field_n<-header_df_n[,1]
 colnames(dns_log)<-field_n
 dns_log$ts <- as.POSIXct(dns_log$ts, origin="1970-01-01")
 
-glimpse(dns_log)
+
 ```
 
 
@@ -83,6 +83,9 @@ glimpse(dns_log)
 
 ```{r}
 glimpse(header_df)
+```
+```{r}
+glimpse(dns_log)
 ```
 
 ### Анализ
