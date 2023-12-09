@@ -44,10 +44,6 @@ data_1 <- read.csv(file='C:/Users/user/Documents/IATPUIB/lab5/mir.csv-01.csv',nr
 ```{r}
 data_2 <- read.csv(file='C:/Users/user/Documents/IATPUIB/lab5/mir.csv-01.csv',skip=169)
 ```
-```{r}
-data_2
-```
-
 
 
 2\. Привести датасеты в вид “аккуратных данных”, преобразовать типы столбцов в
