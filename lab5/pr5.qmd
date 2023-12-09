@@ -1,0 +1,220 @@
+---
+title: "Практическая работа №5"
+author: "Солдатенкова Ксения БИСО-03-20"
+format: 
+  md:
+    output-file: README.md
+editor: visual
+output: md_document
+---
+
+## Цель работы
+
+1\. Получить знания о методах исследования радиоэлектронной обстановки.
+
+2\. Составить представление о механизмах работы Wi-Fi сетей на канальном и
+сетевом уровне модели OSI.
+
+3\. Зекрепить практические навыки использования языка программирования R для
+обработки данных.
+
+4\. Закрепить знания основных функций обработки данных экосистемы tidyverse
+языка R.
+
+## Ход работы
+
+### Подготовка данных
+
+```{r}
+library(tidyverse)
+```
+
+
+1\. Импортируйте данные.
+
+```{r}
+all_data <- read.csv('C:/Users/user/Documents/IATPUIB/lab5/mir.csv-01.csv')
+```
+```{r}
+head(all_data, 10)
+```
+```{r}
+data_1 <- read.csv(file='C:/Users/user/Documents/IATPUIB/lab5/mir.csv-01.csv',nrows=167)
+```
+```{r}
+data_2 <- read.csv(file='C:/Users/user/Documents/IATPUIB/lab5/mir.csv-01.csv',skip=169)
+```
+```{r}
+data_2
+```
+
+
+
+2\. Привести датасеты в вид “аккуратных данных”, преобразовать типы столбцов в
+соответствии с типом данных
+
+```{r}
+data_1 <- data_1 %>% mutate_at(vars(BSSID, Privacy, Cipher, Authentication, LAN.IP, ESSID), trimws) %>% mutate_at(vars(BSSID, Privacy, Cipher, Authentication, LAN.IP, ESSID), na_if, "")
+data_1$First.time.seen <- as.POSIXct(data_1$First.time.seen, origin="1970-01-01")
+data_1$Last.time.seen <- as.POSIXct(data_1$Last.time.seen, origin="1970-01-01")
+```
+
+```{r}
+data_2 <- data_2 %>% mutate_at(vars(Station.MAC, BSSID, Probed.ESSIDs), trimws) %>% mutate_at(vars(Station.MAC, BSSID, Probed.ESSIDs), na_if, "")
+data_2$First.time.seen <- as.POSIXct(data_2$First.time.seen, format = "%Y-%m-%d %H:%M:%S")
+data_2$Last.time.seen <- as.POSIXct(data_2$Last.time.seen, format = "%Y-%m-%d %H:%M:%S")
+```
+
+
+3\. Просмотрите общую структуру данных с помощью функции glimpse()
+
+```{r}
+data_1 %>% glimpse()
+```
+```{r}
+data_2 %>% glimpse()
+```
+
+
+### Анализ
+
+1\. Определить небезопасные точки доступа (без шифрования – OPN).
+
+```{r}
+opn <- data_1 %>% filter(Privacy=="OPN") %>%  select(BSSID, ESSID)
+opn <- unique(opn$BSSID) 
+opn
+```
+
+
+2\. Определить производителя для каждого обнаруженного устройства (онлайн сервис OUI lookup https://ouilookup.com/).
+
+- E8:28:C1:DE:47:D0 - Company: Eltex Enterprise Ltd.
+
+- E8:28:C1:DC:BD:52 - Company: Eltex Enterprise Ltd.
+
+- E8:28:C1:DE:47:D1 - Company: Eltex Enterprise Ltd.
+
+- E8:28:C1:DC:C8:31 - Company: Eltex Enterprise Ltd.
+
+- E8:28:C1:DD:04:42 - Company: Eltex Enterprise Ltd.
+
+- E8:28:C1:DC:C6:B1 - Company: Eltex Enterprise Ltd.
+
+- E8:28:C1:DE:47:D2 - Company: Eltex Enterprise Ltd.
+
+- E8:28:C1:DD:04:4 - Company: Eltex Enterprise Ltd.
+
+- E8:28:C1:DD:04:40 - Company: Eltex Enterprise Ltd.
+
+- E8:28:C1:DC:B2:42 - Company: Eltex Enterprise Ltd.
+
+- E8:28:C1:DC:B2:40 - Company: Eltex Enterprise Ltd.
+
+- E8:28:C1:DC:B2:41 - Company: Eltex Enterprise Ltd.
+
+- E8:28:C1:DE:74:30 - Company: Eltex Enterprise Ltd.
+
+- E8:28:C1:DD:04:50 - Company: Eltex Enterprise Ltd.
+
+- E8:28:C1:DD:04:51 - Company: Eltex Enterprise Ltd.
+
+- E8:28:C1:DC:C8:30 - Company: Eltex Enterprise Ltd.
+
+- E8:28:C1:DC:B2:52 - Company: Eltex Enterprise Ltd.
+
+- E8:28:C1:DC:B2:50 - Company: Eltex Enterprise Ltd.
+
+- E8:28:C1:DC:B2:51 - Company: Eltex Enterprise Ltd.
+
+- E0:D9:E3:48:FF:D2 - Company: Eltex Enterprise Ltd.
+
+- 00:26:99:F2:7A:EF - Company: Cisco Systems, Inc
+
+- 00:25:00:FF:94:73 - Company: Apple, Inc.
+
+- 00:26:99:F2:7A:E0 - Company: Cisco Systems, Inc
+
+
+3\. Выявить устройства, использующие последнюю версию протокола шифрования
+WPA3, и названия точек доступа, реализованных на этих устройствах.
+
+```{r}
+wpa3 <- data_1[str_detect(data_1$Privacy, "WPA3"), ] %>% filter(!is.na(Privacy)) %>% select(BSSID, ESSID, Privacy)
+wpa3
+```
+
+4\. Отсортировать точки доступа по интервалу времени, в течение которого они
+находились на связи, по убыванию.
+
+```{r}
+int_time <- data_1 %>% mutate(Time = seconds_to_period(Last.time.seen - First.time.seen)) %>% arrange(desc(Time)) %>%  select(BSSID, Last.time.seen,First.time.seen, Time)
+int_time
+```
+
+5\. Обнаружить топ-10 самых быстрых точек доступа.
+
+```{r}
+data_1 %>% arrange(desc(Speed)) %>%  select(BSSID, ESSID, Speed) %>% slice(1:10)
+```
+
+6\. Отсортировать точки доступа по частоте отправки запросов (beacons) в единицу
+времени по их убыванию.
+
+```{r}
+beacons_time <- data_1 %>% mutate(Time = seconds_to_period(Last.time.seen - First.time.seen)) %>% arrange(desc(Time)) %>% select(BSSID, Last.time.seen,First.time.seen, X..beacons, Time)
+beacons_time <- beacons_time %>% filter(Time!="0" | X..beacons!="0") %>%  mutate(beacon = as.integer(X..beacons)/ as.integer(Time)) %>% arrange(desc(beacon)) %>% filter(!is.infinite(beacon)) %>% select(BSSID, X..beacons, Time,beacon)
+beacons_time
+```
+
+### Данные клиентов
+
+1\. Определить производителя для каждого обнаруженного устройства (онлайн сервис OUI lookup https://ouilookup.com/).
+
+```{r}
+oui <- data_2 %>% filter(BSSID!="(not associated)") %>% select(BSSID)
+oui <- unique(oui$BSSID) 
+oui
+```
+
+- 00:03:7F Atheros Communications, Inc.
+
+- 0C:80:63 Tp-Link Technologies Co.,Ltd.
+
+- 00:0D:97 Hitachi Energy USA Inc.
+
+- 00:23:EB Cisco Systems, Inc
+
+- 00:25:00 Apple, Inc.
+
+- 00:26:99 Cisco Systems, Inc
+
+- 08:3A:2F Guangzhou Juan Intelligent Tech Joint Stock Co.,Ltd
+
+- DC:09:4C Huawei Technologies Co.,Ltd
+
+- E0:D9:E3 Eltex Enterprise Ltd.
+
+- E8:28:C1 Eltex Enterprise Ltd.
+
+2\. Обнаружить устройства, которые НЕ рандомизируют свой MAC адрес
+
+```{r}
+data_2 %>% select(Station.MAC) %>% filter(!Station.MAC %in% grep(":",data_2$Station.MAC, value = TRUE))
+```
+
+3\. Кластеризовать запросы от устройств к точкам доступа по их именам.
+Определить время появления устройства в зоне радиовидимости и время
+выхода его из нее.
+
+```{r}
+data_2 %>% filter(!is.na(Probed.ESSIDs)) %>% group_by(Station.MAC, Probed.ESSIDs) %>%  summarise("min_first_time" = min(First.time.seen), "max_last_time" = max(Last.time.seen), Power)
+```
+
+4\. Оценить стабильность уровня сигнала внури кластера во времени. Выявить
+наиболее стабильный кластер.
+
+```{r}
+data_2 %>% filter(!is.na(Probed.ESSIDs),!is.na(Power) ) %>% group_by(Station.MAC) %>%  summarise("min_first_time" = min(First.time.seen), "max_last_time" = max(Last.time.seen), Power) %>% arrange(desc(Power)) %>% head(1)
+```
+
