@@ -14,11 +14,9 @@ output: md_document
 
 2\. Изучить структуру журнала системы Windows Active Directory
 
-3\. Зекрепить практические навыки использования языка программирования R для
-обработки данных
+3\. Зекрепить практические навыки использования языка программирования R для обработки данных
 
-4\. Закрепить знания основных функций обработки данных экосистемы tidyverse
-языка R
+4\. Закрепить знания основных функций обработки данных экосистемы tidyverse языка R
 
 ## Ход работы
 
@@ -27,19 +25,22 @@ output: md_document
 ```{r}
 library(dplyr)
 ```
+
 ```{r}
 library(xml2)
 ```
+
 ```{r}
 library(tidyr)
 ```
+
 ```{r}
 library(rvest)
 ```
+
 ```{r}
 library(jsonlite)
 ```
-
 
 1\. Импортируйте данные в R.
 
@@ -47,8 +48,7 @@ library(jsonlite)
 data_js <- stream_in(file("C:\\Users\\user\\Downloads\\dataset\\caldera_attack_evals_round1_day1_2019-10-20201108.json"))
 ```
 
-2\. Привести датасеты в вид “аккуратных данных”, преобразовать типы столбцов в
-соответствии с типом данных
+2\. Привести датасеты в вид "аккуратных данных", преобразовать типы столбцов в соответствии с типом данных
 
 ```{r}
 data_js <- data_js %>% mutate(`@timestamp` = as.POSIXct(`@timestamp`, format = "%Y-%m-%dT%H:%M:%OSZ", tz = "UTC")) %>%rename(timestamp = `@timestamp`, metadata = `@metadata`)
@@ -62,26 +62,21 @@ glimpse(data_js)
 
 ### Анализ
 
-1\. Раскройте датафрейм избавившись от вложенных датафреймов. Для
-обнаружения таких можно использовать функцию dplyr::glimpse() , а для
-раскрытия вложенности – tidyr::unnest() . Обратите внимание, что при
-раскрытии теряются внешние названия колонок – это можно предотвратить
-если использовать параметр tidyr::unnest(..., names_sep = ) .
+1\. Раскройте датафрейм избавившись от вложенных датафреймов. Для обнаружения таких можно использовать функцию dplyr::glimpse() , а для раскрытия вложенности -- tidyr::unnest() . Обратите внимание, что при раскрытии теряются внешние названия колонок -- это можно предотвратить если использовать параметр tidyr::unnest(..., names_sep = ) .
 
 ```{r}
 data_js <- data_js %>% unnest(c(metadata, event, log, winlog, ecs, host, agent), names_sep = ".")
 glimpse(data_js)
 ```
 
-2\. Минимизируйте количество колонок в датафрейме – уберите колоки с
-единственным значением параметра.
+2\. Минимизируйте количество колонок в датафрейме -- уберите колоки с единственным значением параметра.
 
 ```{r}
 data_js <- subset(data_js, select = - c(metadata.beat, metadata.type,metadata.version,metadata.topic,event.kind,winlog.api,agent.ephemeral_id,agent.hostname,agent.id,agent.version,agent.type))
-data %>% glimpse()
+data_js %>% glimpse()
 ```
 
-3\. Какое количество хостов представлено в данном датасете? 
+3\. Какое количество хостов представлено в данном датасете?
 
 1 хост WECServer
 
@@ -89,8 +84,7 @@ data %>% glimpse()
 data_js %>% select(host.name) %>% unique()
 ```
 
-4\. Подготовьте датафрейм с расшифровкой Windows Event_ID, приведите типы
-данных к типу их значений.
+4\. Подготовьте датафрейм с расшифровкой Windows Event_ID, приведите типы данных к типу их значений.
 
 ```{r}
 webpage_url <- "https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/plan/appendix-l--events-to-monitor"
@@ -120,7 +114,7 @@ glimpse(event_data)
 ```{r}
 event_data %>% select(Potential_Criticality) %>% filter(Potential_Criticality == 'High' | Potential_Criticality == 'Medium') %>% group_by(Potential_Criticality) %>% count()
 ```
+
 ## Вывод
 
-Провели анализ журналов с помощью программного пакета dplyr языка
-программирования R 
+Провели анализ журналов с помощью программного пакета dplyr языка программирования R
