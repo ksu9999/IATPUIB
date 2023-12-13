@@ -818,3 +818,8 @@ data_2 %>% filter(!is.na(Probed.ESSIDs),!is.na(Power) ) %>% group_by(Station.MAC
       Station.MAC       min_first_time      max_last_time       Power 
       <chr>             <dttm>              <dttm>              <chr> 
     1 8A:45:77:F9:7F:F4 2023-07-28 10:00:55 2023-07-28 10:00:55 " -89"
+
+## Вывод
+
+Провели анализ журналов с помощью программного пакета dplyr языка
+программирования R

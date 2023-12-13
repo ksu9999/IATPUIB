@@ -228,9 +228,8 @@ dir().
 list.files()
 ```
 
-     [1] "IATPUIB.Rproj" "mytest2.R"     "mytest3.R"     "pr1.html"     
-     [5] "pr1.qmd"       "pr1.rmarkdown" "pr1_files"     "README.md"    
-     [9] "testdir"       "testdir2"     
+    [1] "IATPUIB.Rproj" "pr1.html"      "pr1.qmd"       "pr1.rmarkdown"
+    [5] "pr1_files"     "README.md"     "testdir"       "testdir2"     
 
 As we go through this lesson, you should be examining the help page for
 each new function. Check out the help page for list.files with the
@@ -289,9 +288,9 @@ check this by listing all the files in the current directory.
 list.files()
 ```
 
-     [1] "IATPUIB.Rproj" "mytest.R"      "mytest2.R"     "mytest3.R"    
-     [5] "pr1.html"      "pr1.qmd"       "pr1.rmarkdown" "pr1_files"    
-     [9] "README.md"     "testdir"       "testdir2"     
+    [1] "IATPUIB.Rproj" "mytest.R"      "pr1.html"      "pr1.qmd"      
+    [5] "pr1.rmarkdown" "pr1_files"     "README.md"     "testdir"      
+    [9] "testdir2"     
 
 Check to see if “mytest.R” exists in the working directory using | the
 file.exists() function.
@@ -309,9 +308,9 @@ file.info("mytest.R")
 ```
 
              size isdir mode               mtime               ctime
-    mytest.R    0 FALSE  666 2023-10-11 16:10:16 2023-10-11 16:10:16
+    mytest.R    0 FALSE  666 2023-12-13 13:22:00 2023-12-13 13:22:00
                            atime exe
-    mytest.R 2023-10-11 16:10:16  no
+    mytest.R 2023-12-13 13:22:00  no
 
 Change the name of the file “mytest.R” to “mytest2.R” by using
 file.rename().
@@ -328,7 +327,7 @@ Make a copy of “mytest2.R” called “mytest3.R” using file.copy().
 file.copy("mytest2.R","mytest3.R")
 ```
 
-    [1] FALSE
+    [1] TRUE
 
 Provide the relative path to the file “mytest3.R” by using file.path().
 
@@ -660,3 +659,7 @@ paste(LETTERS, 1:4, sep = "-")
      [1] "A-1" "B-2" "C-3" "D-4" "E-1" "F-2" "G-3" "H-4" "I-1" "J-2" "K-3" "L-4"
     [13] "M-1" "N-2" "O-3" "P-4" "Q-1" "R-2" "S-3" "T-4" "U-1" "V-2" "W-3" "X-4"
     [25] "Y-1" "Z-2"
+
+## Вывод
+
+Изучили базовые принципы работы языка R

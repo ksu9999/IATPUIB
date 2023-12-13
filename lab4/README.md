@@ -469,3 +469,8 @@ top_domains
 -   City: Ashburn
 
 -   Provider organization: Amazon.com
+
+## Вывод
+
+Освоили анализ DNS логов с помощью программного пакета dplyr языка
+программирования R

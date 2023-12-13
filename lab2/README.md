@@ -212,3 +212,8 @@ starwars %>% group_by(species) %>% summarise (sr_len_name = mean(length(name)))
      9 Geonosian           1
     10 Gungan              3
     # ℹ 28 more rows
+
+## Вывод
+
+Освоили базовые операции в языке программирования с помощью программного
+пакета swirl

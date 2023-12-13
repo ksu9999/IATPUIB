@@ -214,3 +214,6 @@ data_2 %>% filter(!is.na(Probed.ESSIDs)) %>% group_by(Station.MAC, Probed.ESSIDs
 data_2 %>% filter(!is.na(Probed.ESSIDs),!is.na(Power) ) %>% group_by(Station.MAC) %>%  summarise("min_first_time" = min(First.time.seen), "max_last_time" = max(Last.time.seen), Power) %>% arrange(desc(Power)) %>% head(1)
 ```
 
+## Вывод
+
+Провели анализ журналов с помощью программного пакета dplyr языка программирования R

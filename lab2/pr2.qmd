@@ -87,3 +87,7 @@ starwars %>% group_by(eye_color) %>% summarise(c_count = n()) %>% slice_max(c_co
 ```{r}
 starwars %>% group_by(species) %>% summarise (sr_len_name = mean(length(name)))
 ```
+
+## Вывод
+
+Освоили базовые операции в языке программирования с помощью программного пакета swirl

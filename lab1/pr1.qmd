@@ -454,3 +454,7 @@ Vector recycling! Try paste(LETTERS, 1:4, sep = "-"), where LETTERS is a predefi
 ```{r}
 paste(LETTERS, 1:4, sep = "-")
 ```
+
+## Вывод
+
+Изучили базовые принципы работы языка R
