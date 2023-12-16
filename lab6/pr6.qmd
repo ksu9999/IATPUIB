@@ -45,7 +45,12 @@ library(jsonlite)
 1\. Импортируйте данные в R.
 
 ```{r}
-data_js <- stream_in(file("C:\\Users\\user\\Downloads\\dataset\\caldera_attack_evals_round1_day1_2019-10-20201108.json"))
+dataset <- "https://storage.yandexcloud.net/iamcth-data/dataset.tar.gz"
+download.file(dataset, destfile = tempf <- tempfile(fileext = ".tar.gz"), mode = "wb")
+tempdir <- tempdir()
+untar(tempf, exdir = tempdir)
+js_files <- list.files(tempdir, pattern="\\.json$", full.names = TRUE, recursive = TRUE)
+data_js <- stream_in(file(js_files))
 ```
 
 2\. Привести датасеты в вид "аккуратных данных", преобразовать типы столбцов в соответствии с типом данных
