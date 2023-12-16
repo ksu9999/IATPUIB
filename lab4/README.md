@@ -37,7 +37,7 @@ library(readr)
 ```
 
 ``` r
-header_df <- read.csv('C:/Users/user/Documents/IATPUIB/lab4/header.csv')
+header_df <- read.csv("header.csv")
 ```
 
 ``` r
@@ -90,57 +90,57 @@ header_df
     21                                               Whether the DNS query was rejected by the server 
 
 ``` r
-dns_log <- read.csv("C:/Users/user/Documents/IATPUIB/lab4/dns.log", sep='\t')
+dns_log <- read.table("dns.log", header = FALSE, sep = "\t", quote = "", encoding="UTF-8")
 ```
 
 ``` r
 head(dns_log, 10)
 ```
 
-       X1331901005.510000 CWGtK431H9XuaTN4fi X192.168.202.100 X45658
-    1          1331901006 CWGtK431H9XuaTN4fi  192.168.202.100  45658
-    2          1331901015  C36a282Jljz7BsbGH   192.168.202.76    137
-    3          1331901016  C36a282Jljz7BsbGH   192.168.202.76    137
-    4          1331901017  C36a282Jljz7BsbGH   192.168.202.76    137
-    5          1331901006  C36a282Jljz7BsbGH   192.168.202.76    137
-    6          1331901007  C36a282Jljz7BsbGH   192.168.202.76    137
-    7          1331901007  C36a282Jljz7BsbGH   192.168.202.76    137
-    8          1331901006 ClEZCt3GLkJdtGGmAa   192.168.202.89    137
-    9          1331901007 ClEZCt3GLkJdtGGmAa   192.168.202.89    137
-    10         1331901008 ClEZCt3GLkJdtGGmAa   192.168.202.89    137
-       X192.168.27.203 X137 udp X33008
-    1   192.168.27.203  137 udp  33008
-    2  192.168.202.255  137 udp  57402
-    3  192.168.202.255  137 udp  57402
-    4  192.168.202.255  137 udp  57402
-    5  192.168.202.255  137 udp  57398
-    6  192.168.202.255  137 udp  57398
-    7  192.168.202.255  137 udp  57398
-    8  192.168.202.255  137 udp  62187
-    9  192.168.202.255  137 udp  62187
-    10 192.168.202.255  137 udp  62187
-                    X..x00.x00.x00.x00.x00.x00.x00.x00.x00.x00.x00.x00.x00.x00 X1
-    1  *\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00  1
-    2                                                                 HPE8AA67  1
-    3                                                                 HPE8AA67  1
-    4                                                                 HPE8AA67  1
-    5                                                                     WPAD  1
-    6                                                                     WPAD  1
-    7                                                                     WPAD  1
-    8                                                                   EWREP1  1
-    9                                                                   EWREP1  1
-    10                                                                  EWREP1  1
-       C_INTERNET X33 SRV X0 NOERROR     F   F.1   F.2   F.3 X1.1 X. X..1   F.4
-    1  C_INTERNET  33 SRV  0 NOERROR FALSE FALSE FALSE FALSE    1  -    - FALSE
-    2  C_INTERNET  32  NB  -       - FALSE FALSE  TRUE FALSE    1  -    - FALSE
-    3  C_INTERNET  32  NB  -       - FALSE FALSE  TRUE FALSE    1  -    - FALSE
-    4  C_INTERNET  32  NB  -       - FALSE FALSE  TRUE FALSE    1  -    - FALSE
-    5  C_INTERNET  32  NB  -       - FALSE FALSE  TRUE FALSE    1  -    - FALSE
-    6  C_INTERNET  32  NB  -       - FALSE FALSE  TRUE FALSE    1  -    - FALSE
-    7  C_INTERNET  32  NB  -       - FALSE FALSE  TRUE FALSE    1  -    - FALSE
-    8  C_INTERNET  32  NB  -       - FALSE FALSE  TRUE FALSE    1  -    - FALSE
-    9  C_INTERNET  32  NB  -       - FALSE FALSE  TRUE FALSE    1  -    - FALSE
-    10 C_INTERNET  32  NB  -       - FALSE FALSE  TRUE FALSE    1  -    - FALSE
+               V1                 V2              V3    V4              V5  V6  V7
+    1  1331901006 CWGtK431H9XuaTN4fi 192.168.202.100 45658  192.168.27.203 137 udp
+    2  1331901006 CWGtK431H9XuaTN4fi 192.168.202.100 45658  192.168.27.203 137 udp
+    3  1331901015  C36a282Jljz7BsbGH  192.168.202.76   137 192.168.202.255 137 udp
+    4  1331901016  C36a282Jljz7BsbGH  192.168.202.76   137 192.168.202.255 137 udp
+    5  1331901017  C36a282Jljz7BsbGH  192.168.202.76   137 192.168.202.255 137 udp
+    6  1331901006  C36a282Jljz7BsbGH  192.168.202.76   137 192.168.202.255 137 udp
+    7  1331901007  C36a282Jljz7BsbGH  192.168.202.76   137 192.168.202.255 137 udp
+    8  1331901007  C36a282Jljz7BsbGH  192.168.202.76   137 192.168.202.255 137 udp
+    9  1331901006 ClEZCt3GLkJdtGGmAa  192.168.202.89   137 192.168.202.255 137 udp
+    10 1331901007 ClEZCt3GLkJdtGGmAa  192.168.202.89   137 192.168.202.255 137 udp
+          V8
+    1  33008
+    2  33008
+    3  57402
+    4  57402
+    5  57402
+    6  57398
+    7  57398
+    8  57398
+    9  62187
+    10 62187
+                                                                            V9 V10
+    1  *\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00   1
+    2  *\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00   1
+    3                                                                 HPE8AA67   1
+    4                                                                 HPE8AA67   1
+    5                                                                 HPE8AA67   1
+    6                                                                     WPAD   1
+    7                                                                     WPAD   1
+    8                                                                     WPAD   1
+    9                                                                   EWREP1   1
+    10                                                                  EWREP1   1
+              V11 V12 V13 V14     V15   V16   V17   V18   V19 V20 V21 V22   V23
+    1  C_INTERNET  33 SRV   0 NOERROR FALSE FALSE FALSE FALSE   1   -   - FALSE
+    2  C_INTERNET  33 SRV   0 NOERROR FALSE FALSE FALSE FALSE   1   -   - FALSE
+    3  C_INTERNET  32  NB   -       - FALSE FALSE  TRUE FALSE   1   -   - FALSE
+    4  C_INTERNET  32  NB   -       - FALSE FALSE  TRUE FALSE   1   -   - FALSE
+    5  C_INTERNET  32  NB   -       - FALSE FALSE  TRUE FALSE   1   -   - FALSE
+    6  C_INTERNET  32  NB   -       - FALSE FALSE  TRUE FALSE   1   -   - FALSE
+    7  C_INTERNET  32  NB   -       - FALSE FALSE  TRUE FALSE   1   -   - FALSE
+    8  C_INTERNET  32  NB   -       - FALSE FALSE  TRUE FALSE   1   -   - FALSE
+    9  C_INTERNET  32  NB   -       - FALSE FALSE  TRUE FALSE   1   -   - FALSE
+    10 C_INTERNET  32  NB   -       - FALSE FALSE  TRUE FALSE   1   -   - FALSE
 
 2\. Добавьте пропущенные данные о структуре данных (назначении столбцов)
 
@@ -237,32 +237,32 @@ glimpse(header_df)
 glimpse(dns_log)
 ```
 
-    Rows: 427,935
+    Rows: 427,936
     Columns: 24
-    $ `ts `          <dbl> 1331901006, 1331901015, 1331901016, 1331901017, 1331901…
-    $ `uid `         <chr> "CWGtK431H9XuaTN4fi", "C36a282Jljz7BsbGH", "C36a282Jljz…
-    $ id.orig_h      <chr> "192.168.202.100", "192.168.202.76", "192.168.202.76", …
-    $ id.orig_p      <int> 45658, 137, 137, 137, 137, 137, 137, 137, 137, 137, 137…
-    $ id.resp_h      <chr> "192.168.27.203", "192.168.202.255", "192.168.202.255",…
+    $ `ts `          <dbl> 1331901006, 1331901006, 1331901015, 1331901016, 1331901…
+    $ `uid `         <chr> "CWGtK431H9XuaTN4fi", "CWGtK431H9XuaTN4fi", "C36a282Jlj…
+    $ id.orig_h      <chr> "192.168.202.100", "192.168.202.100", "192.168.202.76",…
+    $ id.orig_p      <int> 45658, 45658, 137, 137, 137, 137, 137, 137, 137, 137, 1…
+    $ id.resp_h      <chr> "192.168.27.203", "192.168.27.203", "192.168.202.255", …
     $ id.resp_p      <int> 137, 137, 137, 137, 137, 137, 137, 137, 137, 137, 137, …
     $ `proto `       <chr> "udp", "udp", "udp", "udp", "udp", "udp", "udp", "udp",…
-    $ `trans_id `    <int> 33008, 57402, 57402, 57402, 57398, 57398, 57398, 62187,…
+    $ `trans_id `    <int> 33008, 33008, 57402, 57402, 57402, 57398, 57398, 57398,…
     $ `query `       <chr> "*\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x…
     $ `qclass `      <chr> "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", …
     $ `qclass_name ` <chr> "C_INTERNET", "C_INTERNET", "C_INTERNET", "C_INTERNET",…
-    $ `qtype `       <chr> "33", "32", "32", "32", "32", "32", "32", "32", "32", "…
-    $ `qtype_name `  <chr> "SRV", "NB", "NB", "NB", "NB", "NB", "NB", "NB", "NB", …
-    $ `rcode `       <chr> "0", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", …
-    $ `rcode_name `  <chr> "NOERROR", "-", "-", "-", "-", "-", "-", "-", "-", "-",…
+    $ `qtype `       <chr> "33", "33", "32", "32", "32", "32", "32", "32", "32", "…
+    $ `qtype_name `  <chr> "SRV", "SRV", "NB", "NB", "NB", "NB", "NB", "NB", "NB",…
+    $ `rcode `       <chr> "0", "0", "-", "-", "-", "-", "-", "-", "-", "-", "-", …
+    $ `rcode_name `  <chr> "NOERROR", "NOERROR", "-", "-", "-", "-", "-", "-", "-"…
     $ `QR `          <lgl> FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE,…
     $ `AA `          <lgl> FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE,…
-    $ `TC RD `       <lgl> FALSE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, …
+    $ `TC RD `       <lgl> FALSE, FALSE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE,…
     $ `RA `          <lgl> FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE,…
-    $ `Z `           <int> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1…
+    $ `Z `           <int> 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1…
     $ `answers `     <chr> "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", …
     $ `TTLs `        <chr> "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", …
     $ `rejected `    <lgl> FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE,…
-    $ ts             <dttm> 2012-03-16 16:30:05, 2012-03-16 16:30:15, 2012-03-16 1…
+    $ ts             <dttm> 2012-03-16 16:30:05, 2012-03-16 16:30:05, 2012-03-16 1…
 
 ### Анализ
 
@@ -339,7 +339,7 @@ print(top_domains)
      4 "time.apple.com"                                                        13109
      5 "safebrowsing.clients.google.com"                                       11658
      6 "wpad"                                                                  11429
-     7 "*\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00…    10401
+     7 "*\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00…    10402
      8 "isatap"                                                                 9712
      9 "44.206.168.192.in-addr.arpa"                                            7248
     10 "hpe8aa67"                                                               6929
@@ -357,7 +357,7 @@ summary(time_interval)
 ```
 
       Length    Class     Mode 
-      137205 difftime  numeric 
+      137206 difftime  numeric 
 
 9\. Часто вредоносное программное обеспечение использует DNS канал в
 качестве канала управления, периодически отправляя запросы на
@@ -405,7 +405,7 @@ top_domains
      4 "time.apple.com"                                                        13109
      5 "safebrowsing.clients.google.com"                                       11658
      6 "wpad"                                                                  11429
-     7 "*\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00…    10401
+     7 "*\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00\\x00…    10402
      8 "isatap"                                                                 9712
      9 "44.206.168.192.in-addr.arpa"                                            7248
     10 "hpe8aa67"                                                               6929

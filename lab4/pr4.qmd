@@ -31,13 +31,13 @@ library(tidyverse)
 library(readr)
 ```
 ```{r}
-header_df <- read.csv('C:/Users/user/Documents/IATPUIB/lab4/header.csv')
+header_df <- read.csv("header.csv")
 ```
 ```{r}
 header_df
 ```
 ```{r}
-dns_log <- read.csv("C:/Users/user/Documents/IATPUIB/lab4/dns.log", sep='\t')
+dns_log <- read.table("dns.log", header = FALSE, sep = "\t", quote = "", encoding="UTF-8")
 ```
 ```{r}
 head(dns_log, 10)
@@ -59,8 +59,6 @@ header_df_n <- header_df %>% add_row(Field = 'id.orig_p', Type = 'port', Descrip
 
 
 ```{r}
-
-
 header_df_n <- header_df_n %>% add_row(Field = 'id.resp_p', Type = 'port', Description = 'Response port', .before = 6)
 ```
 ```{r}
@@ -74,8 +72,6 @@ header_df_n
 field_n<-header_df_n[,1]
 colnames(dns_log)<-field_n
 dns_log$ts <- as.POSIXct(dns_log$ts, origin="1970-01-01")
-
-
 ```
 
 
