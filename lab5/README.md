@@ -36,7 +36,7 @@ library(tidyverse)
 1\. Импортируйте данные.
 
 ``` r
-all_data <- read.csv('C:/Users/user/Documents/IATPUIB/lab5/mir.csv-01.csv')
+all_data <- read.csv("mir.csv-01.csv")
 ```
 
 ``` r
@@ -78,11 +78,11 @@ head(all_data, 10)
     10        12              C322U06 9080  NA
 
 ``` r
-data_1 <- read.csv(file='C:/Users/user/Documents/IATPUIB/lab5/mir.csv-01.csv',nrows=167)
+data_1 <- read.csv("mir.csv-01.csv", nrows = 167)
 ```
 
 ``` r
-data_2 <- read.csv(file='C:/Users/user/Documents/IATPUIB/lab5/mir.csv-01.csv',skip=169)
+data_2 <- read.csv("mir.csv-01.csv", skip = 169)
 ```
 
 2\. Привести датасеты в вид “аккуратных данных”, преобразовать типы
