@@ -37,7 +37,7 @@ library(readr)
 ```
 
 ``` r
-header_df <- read.csv("header.csv")
+header_df <- read.csv(file="header.csv")
 ```
 
 ``` r
@@ -90,7 +90,7 @@ header_df
     21                                               Whether the DNS query was rejected by the server 
 
 ``` r
-dns_log <- read.table("dns.log", header = FALSE, sep = "\t", quote = "", encoding="UTF-8")
+dns_log <- read.csv(file="dns.log", header = FALSE, sep = "\t", encoding = "UTF-8")
 ```
 
 ``` r
