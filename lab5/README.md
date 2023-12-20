@@ -36,53 +36,11 @@ library(tidyverse)
 1\. Импортируйте данные.
 
 ``` r
-all_data <- read.csv("mir.csv-01.csv")
+data_1 <- read.csv(file="mir.csv-01.csv", nrows = 167)
 ```
 
 ``` r
-head(all_data, 10)
-```
-
-                   BSSID      First.time.seen       Last.time.seen channel Speed
-    1  BE:F1:71:D5:17:8B  2023-07-28 09:13:03  2023-07-28 11:50:50       1   195
-    2  6E:C7:EC:16:DA:1A  2023-07-28 09:13:03  2023-07-28 11:55:12       1   130
-    3  9A:75:A8:B9:04:1E  2023-07-28 09:13:03  2023-07-28 11:53:31       1   360
-    4  4A:EC:1E:DB:BF:95  2023-07-28 09:13:03  2023-07-28 11:04:01       7   360
-    5  D2:6D:52:61:51:5D  2023-07-28 09:13:03  2023-07-28 10:30:19       6   130
-    6  E8:28:C1:DC:B2:52  2023-07-28 09:13:03  2023-07-28 11:55:38       6   130
-    7  BE:F1:71:D6:10:D7  2023-07-28 09:13:03  2023-07-28 11:50:44      11   195
-    8  0A:C5:E1:DB:17:7B  2023-07-28 09:13:03  2023-07-28 11:36:31      11   130
-    9  38:1A:52:0D:84:D7  2023-07-28 09:13:03  2023-07-28 10:25:02      11   130
-    10 BE:F1:71:D5:0E:53  2023-07-28 09:13:03  2023-07-28 10:29:21       1   195
-       Privacy Cipher Authentication Power X..beacons     X..IV           LAN.IP
-    1     WPA2   CCMP            PSK   -30        846       504    0.  0.  0.  0
-    2     WPA2   CCMP            PSK   -30        750       116    0.  0.  0.  0
-    3     WPA2   CCMP            PSK   -68        694        26    0.  0.  0.  0
-    4     WPA2   CCMP            PSK   -37        510        21    0.  0.  0.  0
-    5     WPA2   CCMP            PSK   -57        647         6    0.  0.  0.  0
-    6      OPN                         -63        251      3430  172. 17.203.197
-    7     WPA2   CCMP            PSK   -27       1647        80    0.  0.  0.  0
-    8     WPA2   CCMP            PSK   -38       1251        11    0.  0.  0.  0
-    9     WPA2   CCMP            PSK   -38        704         0    0.  0.  0.  0
-    10    WPA2   CCMP            PSK   -66        617         0    0.  0.  0.  0
-       ID.length                     ESSID Key
-    1         12              C322U13 3965  NA
-    2          4                      Cnet  NA
-    3          2                        KC  NA
-    4         14            POCO X5 Pro 5G  NA
-    5         25                            NA
-    6         13             MIREA_HOTSPOT  NA
-    7         12              C322U21 0566  NA
-    8         13             AndroidAP177B  NA
-    9         24  EBFCD57F-EE81fI_DL_1AO2T  NA
-    10        12              C322U06 9080  NA
-
-``` r
-data_1 <- read.csv("mir.csv-01.csv", nrows = 167)
-```
-
-``` r
-data_2 <- read.csv("mir.csv-01.csv", skip = 169)
+data_2 <- read.csv(file="mir.csv-01.csv", skip = 169)
 ```
 
 2\. Привести датасеты в вид “аккуратных данных”, преобразовать типы
