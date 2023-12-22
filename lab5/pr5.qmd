@@ -23,8 +23,12 @@ output: md_document
 ### Подготовка данных
 
 ```{r}
+library(dplyr)
+```
+```{r}
 library(tidyverse)
 ```
+
 
 1\. Импортируйте данные.
 

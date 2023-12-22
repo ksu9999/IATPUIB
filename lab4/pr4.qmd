@@ -23,7 +23,7 @@ output: md_document
 1\. Импортируйте данные DNS
 
 ```{r}
-library(tidyverse)
+library(dplyr)
 ```
 
 ```{r}
